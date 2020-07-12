@@ -1,0 +1,16 @@
+•	class Solution(object):
+•	    def rotate(self, nums, k):
+•	        """
+•	        :type nums: List[int]
+•	        :type k: int
+•	        :rtype: None Do not return anything, modify nums in-place instead.
+•	        """
+•	        right_num = 0
+•	        if not nums:
+•	            return []
+•	        elif len(nums) <= k:
+•	            right_num = k % len(nums)
+•	        elif len(nums) > k:
+•	            right_num = k
+•	        nums = nums[:-right_num-1:-1][::-1] + nums[:len(nums)-right_num]
+•	        return nums
