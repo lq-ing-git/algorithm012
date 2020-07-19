@@ -1,0 +1,8 @@
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        from collections import Counter
+        dict_num = Counter(nums)
+        s = []
+        for t,v in dict_num.most_common(k):
+            s.append(t)
+        return s
