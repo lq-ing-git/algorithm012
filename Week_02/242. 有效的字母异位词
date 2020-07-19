@@ -1,0 +1,43 @@
+"""
+    异位词：
+        字母异位词是指由相同的字母按照不同的顺序组成的单词
+    切题四件套（四步）：
+    1、clarification:和面试官将题目过一遍，确保自己对题目的理解是正确的
+    2、possible solutions:想所有可能的解法解题，从中找出最优的（时间和空间复杂度是最好的）
+    3、coding:写代码
+    4、test cases :进行测试样例的阐述
+    方法：
+    1、暴力法：sort 、sorted_str相等？ O(NlogN -> N为字符串长度))
+    2、hash 、 map ->统计每个字符的频次
+"""
+
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        #暴力法：
+        # if sorted(s) == sorted(t):
+        #     return True
+        # else:
+        #     return False
+        
+        # hash法：
+        if len(s) != len(t):
+            return False
+        if not s and not t:
+            return True
+        #定义一个map用来统计每个字符的频次
+        count = {}
+        for char in s:
+            if char in count:
+                count[char] += 1
+            else:
+                count[char] = 1
+        for char in t:
+            if char in count:
+                count[char] -= 1
+            else:
+                return False
+        for value in count.values():
+            if value != 0:
+                return False
+            else:
+                return True
